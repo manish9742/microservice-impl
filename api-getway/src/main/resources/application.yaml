@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: api-getway
+  cloud:
+    gateway:
+      mvc:
+        routes:
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
+          predicates:
+          - Path=/users/**
+              # filters:
+              #  - name: CircuitBreaker
+              #    args:
+              #     name: USER-SERVICE
+            #    fallbackuri: forward:/userservicefallback
+        #############################################################
+        - id: HOTEL-SERVICE
+          uri: lb://HOTEL-SERVICE
+          predicates:
+          - Path=/hotel/**
+
+        #########################################################
+        - id: RATING-SERVICE
+          uri: lb://RATING-SERVICE
+          predicates:
+          - Path=/rating/**
+
+
+
+
+server:
+  port: 8084
+
+eureka:
+  instance:
+    appname: api-getway
+    prefer-ip-address : true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+  serviceUrl:
+    defaultZone: http://localhost:8761
+
+

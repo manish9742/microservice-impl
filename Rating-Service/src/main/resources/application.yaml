@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: Rating-Service
+  datasource:
+    url: jdbc:mariadb://172.168.10.101:3306/microsvs
+    username: golden
+    password: golden
+    driver-class-name: org.mariadb.jdbc.Driver
+    jpa:
+      hibernate:
+        ddl-auto: update
+      properties:
+
+      show-sql: true
+server:
+  port: 8083
+
+  eureka:
+    instance:
+      hostname: localhost
+      prefer-ip-address : true
+      appname: rating-service
+    client:
+      register-with-eureka: false
+      fetch-registry: false
