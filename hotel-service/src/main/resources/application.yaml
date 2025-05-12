@@ -1,6 +1,11 @@
 spring:
   application:
     name: hotel-service
+  config:
+    import: configserver:http://localhost:8085
+  profiles:
+    active:
+      - default
   datasource:
     url: jdbc:mariadb://172.168.10.101:3306/microsvs
     username: golden
@@ -11,16 +16,20 @@ spring:
         ddl-auto: update
       properties:
       show-sql: true
+
+
+
 server:
   port: 8082
 
 
-eureka:
-  instance:
-    appname: hotel-service
-    prefer-ip-address : true
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-  service-url:
-    defaultZone: http://localhost:8761/eureka
+
+#eureka:
+#  instance:
+#    appname: hotel-service
+#    prefer-ip-address : true
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#  service-url:
+#    defaultZone: http://localhost:8761/eureka

@@ -10,16 +10,21 @@ spring:
       hibernate:
         ddl-auto: update
       properties:
-
       show-sql: true
+  config:
+    import: configserver:http://localhost:8085
+  profiles:
+    active:
+      - default
+
 server:
   port: 8083
 
-  eureka:
-    instance:
-      hostname: localhost
-      prefer-ip-address : true
-      appname: rating-service
-    client:
-      register-with-eureka: false
-      fetch-registry: false
+#  eureka:
+#    instance:
+#      hostname: localhost
+#      prefer-ip-address : true
+#      appname: rating-service
+#    client:
+#      register-with-eureka: false
+#      fetch-registry: false

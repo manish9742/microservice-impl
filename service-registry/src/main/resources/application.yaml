@@ -6,19 +6,25 @@ spring:
     username: golden
     password: golden
     driver-class-name: org.mariadb.jdbc.Driver
-    jpa:
-      hibernate:
-        ddl-auto: update
-      properties:
-      show-sql: true
+#    jpa:
+#      hibernate:
+#        ddl-auto: update
+#      properties:
+#       show-sql: true
+  config:
+    import: configserver:http://localhost:8085
+  profiles:
+    active:
+      - default
+
 server:
   port: 8761
 
-eureka:
-  instance:
-    preferIpAddress: true
-  client:
-    register-with-eureka: false
-    fetch-registry: false
-  serviceUrl:
-    defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+#eureka:
+#  instance:
+#    preferIpAddress: true
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+#  serviceUrl:
+#    defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
