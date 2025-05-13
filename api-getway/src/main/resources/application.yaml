@@ -2,7 +2,7 @@ spring:
   application:
     name: api-getway
   config:
-    import: configserver:http://localhost:8085
+    import: optional:configserver:http://localhost:8085
   profiles:
     active:
       - default
@@ -35,9 +35,9 @@ spring:
 
 
 
-#server:
-#  port: 8084
-#
+server:
+  port: 8084
+
 #eureka:
 #  instance:
 #    appname: api-getway
